@@ -2,44 +2,31 @@
 
 
 
-Use https://start.spring.io/ to create your basic Springboot application.
+## How to start your own application
 
-![image-20240411155350104](/Users/william.marcq/Library/Application Support/typora-user-images/image-20240411155350104.png)
-
-
-
-
-
-Add that code to pom.xml, get the version in https://mvnrepository.com/artifact/io.camunda.connector/spring-boot-starter-camunda-connectors
+1. Use https://start.spring.io/ to create your basic Springboot application. *I personally use **Maven**, **Java 21**, **Springboot 3.2.4** and **Jar** packaging.*
+2. Add that following code to your **pom.xml** file.  Retrieves latest version on https://mvnrepository.com/artifact/io.camunda.connector/spring-boot-starter-camunda-connectors
 
 ```xml
 <dependency>
     <groupId>io.camunda.connector</groupId>
     <artifactId>spring-boot-starter-camunda-connectors</artifactId>
-    <version>${version.connectors}</version>
+    <version>8.4.6</version>
 </dependency>
 ```
 
+3. On your **Camunda Console**, create your API client credentials:  Console > Clusters (top menu) > Select your cluster > API > Create new client
 
+   Give a name to your client and select the scope (Personally, I tick all the boxes).
 
-Create your API credential
+4. Copy to clipboard the Spring Boot  content.
 
-Console > Clusters (menu du haut)
+5. Add it to your ***src/main/resources/application.properties***
 
-Select cluster > API > Create new client
+6. Open the terminal, go to your root application directory and try the following command
 
-Give a name and select the scope (I recommend to check all) > Create
+   ```bash
+   mvn spring-boot:run
+   ```
 
-Copy to clipboard 
-
-Add it to src/resources/application.properties
-
-Open the terminal and try mvn spring-boot:run
-
-
-
-If you have this kind of error no worries, it's not a blocking error, this is because you have an inbound  connector or webhook deployed on your cluster.
-
-![image-20240411160933030](/Users/william.marcq/Library/Application Support/typora-user-images/image-20240411160933030.png)
-
-If your terminal is waiting, it's OK.
+If your terminal is on hold (cursor blinks) that very good: your Camunda application is up and running :facepunch:
